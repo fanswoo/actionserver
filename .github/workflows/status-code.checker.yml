@@ -13,7 +13,7 @@ jobs:
         run: HTTP_STATUS_CODE=$(curl -I -m 15 -s -w "%{http_code}\n" -o /dev/null https://fanswoo.com)
         
       - name: Notify Slack failed notification
-        if: HTTP_STATUS_CODE !== 200
+        if: $HTTP_STATUS_CODE !== 200
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_TITLE: ':no_entry: 正式站佈署失敗'
