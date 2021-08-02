@@ -10,13 +10,10 @@ jobs:
 
     steps:
       - name: check
-        run: |
-          HTTP_STATUS_CODE=$(curl -I -m 15 -s -w "%{http_code}\n" -o /dev/null https://fanswoo.com)
-          echo "HTTP_STATUS_CODE=$HTTP_STATUS_CODE" >> $GITHUB_ENV
-          echo $HTTP_STATUS_CODE
+        run: ./http-status-code-checker.sh
         
       - name: Notify Slack failed notification
-        if: ${{ env.HTTP_STATUS_CODE != 200 }}
+        if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_TITLE: ':no_entry: 正式站運作中斷'
