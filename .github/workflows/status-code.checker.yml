@@ -19,8 +19,8 @@ jobs:
         if: ${{ env.HTTP_STATUS_CODE != 200 }}
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_TITLE: ':no_entry: 正式站佈署失敗'
-          SLACK_MESSAGE: '@sacriley 偵測到網站運作中斷，請立刻確認網站在線狀態'
+          SLACK_TITLE: ':no_entry: 正式站運作中斷'
+          SLACK_MESSAGE: '@sacriley 偵測到網站運作中斷，請立即確認網站在線狀態'
           SLACK_FOOTER: ''
           SLACK_LINK_NAMES: true
           MSG_MINIMAL: commit,actions url
